@@ -1,4 +1,4 @@
-package Algo;
+package Algo.practise2;
 
 public class MersennePrimeExample
 {

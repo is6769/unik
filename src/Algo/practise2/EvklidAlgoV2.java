@@ -1,4 +1,4 @@
-package Algo;
+package Algo.practise2;
 
 import java.util.*;
 import java.util.stream.Collectors;

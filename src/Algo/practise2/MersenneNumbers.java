@@ -1,6 +1,5 @@
-package Algo;
+package Algo.practise2;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MersenneNumbers {

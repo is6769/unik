@@ -1,7 +1,6 @@
-package Algo;
+package Algo.practise1;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BinarySearch1 {
 

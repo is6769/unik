@@ -1,4 +1,4 @@
-package Algo;
+package Algo.practise1;
 
 public class ChordMethod {
 

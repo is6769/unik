@@ -1,39 +1,53 @@
 package Algo.practise3;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MethodOfHalfDivision {
 
-    private double dividend;
-    private double divisor;
-    private MultiplyingNormal multiplyingNormal=new MultiplyingNormal();
+    private String dividend;
+    private String divisor;
+    private final MultiplyingNormal multiplyingNormal=new MultiplyingNormal();
+    private final AdditionSubtraction additionSubtraction=new AdditionSubtraction();
 
     public MethodOfHalfDivision() {
         Scanner myObj = new Scanner(System.in);
-        dividend = myObj.nextLong();
-        divisor = myObj.nextLong();
-        //halfDiv(Double.MIN_VALUE,);
+        dividend = myObj.next();
+        divisor = myObj.next();
+        halfDiv("0",dividend);
     }
 
     private String f(String x){
-        return dividend-divisor*x;
+        return additionSubtraction.allLogic(dividend,"-",multiplyingNormal.allLogic(divisor,x));
     }
 
-    private void halfDiv(Double start,String end){
-        String mid=multiplyingNormal.allLogic(end,"5");
-        if(smallerThan(f(mid))<=0.00000001){
-            System.out.println(start);
-            return;
+    private void halfDiv(String start,String end){
+        var midB=multiplyingNormal.allLogic(additionSubtraction.allLogic(end,"+",start),"5");
+        midB=midB.substring(0,midB.length()-1);
+        String mid=(Integer.parseInt(end.substring(end.length()-1))%2==0) ? midB : additionSubtraction.allLogic(midB, "+","1");
+        var currVal=f(mid);
+        if (currVal.charAt(0)!='-' && isSmallerOrEqualsThan(currVal,divisor)) {
+            System.out.println(mid);
+            System.out.println(currVal);
         }
-        else if (f(mid)*f(start)<0){
+        else if(currVal.charAt(0)=='-'){
             halfDiv(start,mid);
         }else{
             halfDiv(mid,end);
         }
     }
 
-    private boolean smallerThan(String f) {
-
+    private boolean isSmallerOrEqualsThan(String result,String divisor) {
+        if (result.length()==divisor.length()){
+            for (int i = 0; i < result.length(); i++) {
+                if ((int)result.charAt(i)-'0'<(int)divisor.charAt(i) -'0'){
+                    return true;
+                } else if ((int)result.charAt(i) - '0'>=(int)divisor.charAt(i) -'0') {
+                    return false;
+                }
+            }
+        }
+        return result.length()<=divisor.length();
     }
 
     public static void main(String[] args) {

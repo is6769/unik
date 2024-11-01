@@ -3,7 +3,7 @@ package Algo.practise4;
 /*
 1. из начала перекладываем на вспомогательный n-1
 2. max->end
-3. тк на вспомогательном сейчас пирамида из n-1 мы делаем vsp->end все
+3. на vsp сейчас n-1,на end самый большой, значит мы должны переложить n-1 из vsp в end, используя пустой st как новый vsp.
 
 */
 
@@ -20,9 +20,9 @@ public class HanoiTower {
             return;
         }
 
-        hanoi(n-1,st,end,vsp);
-        System.out.println(st+"->"+end);
-        hanoi(n-1,vsp,st,end);
+        hanoi(n-1,st,end,vsp);//из начала перекладываем на вспомогательный n-1
+        System.out.println(st+"->"+end); //max->end
+        hanoi(n-1,vsp,st,end); //на vsp сейчас n-1,на end самый большой, значит мы должны переложить n-1 из vsp в end, используя пустой st как новый vsp.
     }
 
     public static void main(String[] args) {

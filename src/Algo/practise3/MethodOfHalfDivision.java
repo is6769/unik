@@ -23,12 +23,13 @@ public class MethodOfHalfDivision {
 
     private void halfDiv(String start,String end){
         var midB=multiplyingNormal.allLogic(additionSubtraction.allLogic(end,"+",start),"5");
+        var mid5=midB;
         midB=midB.substring(0,midB.length()-1);
-        String mid=(Integer.parseInt(end.substring(end.length()-1))%2==0) ? midB : additionSubtraction.allLogic(midB, "+","1");
+        String mid=(Integer.parseInt(mid5.substring(mid5.length()-1))%2==0) ? midB : additionSubtraction.allLogic(midB, "+","1");
         var currVal=f(mid);
         if (currVal.charAt(0)!='-' && isSmallerOrEqualsThan(currVal,divisor)) {
-            System.out.println(mid);
-            System.out.println(currVal);
+            System.out.println("частное: "+mid);
+            System.out.println("остаток: "+currVal);
         }
         else if(currVal.charAt(0)=='-'){
             halfDiv(start,mid);

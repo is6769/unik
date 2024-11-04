@@ -1,2 +1,2 @@
-Repostory for university practices.
+Repository for university practices.
 All is written on Java 22.

@@ -1,0 +1,11 @@
+{
+    "name": "John",
+    "surname": "Dow",
+    "attributes": ["corpse","dead","popular"],
+    "age": 50,
+    "isHuman": true,
+    "anotherInfo": "adasdsa:dadasdas",
+    "specialAttribute": {
+        "description": "blblbllbblblbllbbllb"
+    }
+}

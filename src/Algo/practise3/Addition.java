@@ -1,18 +1,25 @@
 package Algo.practise3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Addition {
 
     public Addition() {
+
+        Scanner myObj = new Scanner(System.in);
+        String n1 = myObj.next();
+        String n2 = myObj.next();
+
         var number1=new ArrayList<Integer>();
         var number2=new ArrayList<Integer>();
         number1.add(0);//добавил по нулю в массивы чтобы не париться с доп разрядом
         number2.add(0);
 
-        initTest(number1,number2);
+        fillArrays(number1,number2,n1,n2);
 
         if (number1.size() > number2.size()) {
             completeArrays(number1.size() - number2.size(), number2);
@@ -36,41 +43,11 @@ public class Addition {
         }
     }
 
-    private void initTest(ArrayList<Integer> number1,ArrayList<Integer> number2){
-        /*
-        number1.add(0);
-        number1.add(1);
-        number1.add(0);
-        number1.add(0);
-        number1.add(0);
-        number1.add(1);
-        number1.add(1);
-        number1.add(1);
-        number1.add(0);
-        number1.add(0);
-
-        number2.add(0);
-        number2.add(1);
-        number2.add(0);
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
-        number2.add(0);
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
-        */
-        number1.add(1);
-        number1.add(1);
-        number1.add(1);
-        number1.add(1);
-
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
-        number2.add(1);
+    private void fillArrays(ArrayList<Integer> number1, ArrayList<Integer> number2, String n1, String n2) {
+        if ('-' == n1.charAt(0)) n1=n1.replace("-","");
+        if ('-' == n2.charAt(0)) n2=n2.replace("-","");
+        Arrays.stream(n1.split("")).forEach(x->number1.add(Integer.valueOf(x)));
+        Arrays.stream(n2.split("")).forEach(x->number2.add(Integer.valueOf(x)));
     }
 
     private void plus(ArrayList<Integer> number1,ArrayList<Integer> number2){
@@ -92,7 +69,7 @@ public class Addition {
 
 
         if(interLst.contains(1))plus(number1,interLst);
-        else System.out.println("result:"+number1);
+        else System.out.println("result:"+number1.stream().map(String::valueOf).reduce(String::concat).get().replaceFirst("^0+(?!$)", ""));
 
     }
 

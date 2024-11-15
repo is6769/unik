@@ -10,9 +10,9 @@ public class QuickSort {
 
     public QuickSort() {
         ArrayList<Integer> lst= new ArrayList<>(IntStream.generate(() -> new Random().nextInt(100)).limit(10).boxed().toList());
-        System.out.println(lst);
+        System.out.println("unsorted: "+lst);
         quickSort(lst,0,lst.size());
-        System.out.println(lst);
+        System.out.println("sorted: "+lst);
     }
 
     private void quickSort(List<Integer> lst,int low,int high) {

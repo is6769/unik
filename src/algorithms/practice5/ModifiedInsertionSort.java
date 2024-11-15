@@ -1,6 +1,7 @@
 package algorithms.practice5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -12,12 +13,13 @@ public class ModifiedInsertionSort {
     }
 
     private void modifiedInsertionSort(ArrayList<Integer> lst) {
-        System.out.println(lst);
+        System.out.println("unsorted: "+lst);
         for (int i = 1; i < lst.size(); i++) {
             lst.add(binaryIndexSearch(lst,0,i), lst.get(i));
             lst.remove(i+1);
         }
-        System.out.println(lst);
+        System.out.println("sorted: "+lst);
+
     }
 
     private int binaryIndexSearch(ArrayList<Integer> lst, int low, int high) {

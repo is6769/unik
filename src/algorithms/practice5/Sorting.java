@@ -10,55 +10,73 @@ public class Sorting {
 
     public Sorting() {
         var list=new ArrayList<Integer>();
+        var sc=Math.pow(10,-9);
         initTest(list);
+        //modifiedInsertionSortV2(list);
         //System.out.println(list);
+//        System.out.println(list);
 
         var l=getCopy(list);
         long startTime = System.nanoTime();
         //bubbleSort(l);
+        //System.out.println(l);
         long estimatedTime = System.nanoTime() - startTime;
-        //System.out.println("bubbleSort time elapsed: \t\t\t"+estimatedTime);
-
+//        System.out.println("bubbleSort time elapsed: \t\t\t"+estimatedTime*sc);
+//
 //        l=getCopy(list);
 //        startTime = System.nanoTime();
+//
 //        selectionSort(l);
+//        //System.out.println(l);
 //        estimatedTime = System.nanoTime() - startTime;
-//        System.out.println("selectionSort time elapsed: \t\t"+estimatedTime);
+//        System.out.println("selectionSort time elapsed: \t\t"+estimatedTime*sc);
 //
-//
+////
 //        l=getCopy(list);
 //        startTime = System.nanoTime();
 //        insertionSort(l);
 //        estimatedTime = System.nanoTime() - startTime;
-//        System.out.println("insertionSort time elapsed: \t\t"+estimatedTime);
-//
-//
+//        System.out.println("insertionSort time elapsed: \t\t"+estimatedTime*sc);
+////
+////
 //        l=getCopy(list);
 //        startTime = System.nanoTime();
 //        cocktailSort(l);
 //        estimatedTime = System.nanoTime() - startTime;
-//        System.out.println("cocktailSort time elapsed: \t\t\t"+estimatedTime);
-
+//        System.out.println("cocktailSort time elapsed: \t\t\t"+estimatedTime*sc);
+////
 //        l=getCopy(list);
 //        startTime = System.nanoTime();
-//        //shellSort(l,initH(1,l.size()/2));
-//        shellSort(l,9841);
+//        shellSort(l,initH(1,l.size()/2));
+//        //shellSort(l,9841);
 //        estimatedTime = System.nanoTime() - startTime;
-//        System.out.println("shellSort time elapsed: \t\t\t"+estimatedTime);
-
+//        System.out.println("shellSort time elapsed: \t\t\t"+estimatedTime*sc);
+////
 
         l=getCopy(list);
         startTime = System.nanoTime();
         quickSort(l,0,l.size());
         estimatedTime = System.nanoTime() - startTime;
-        System.out.println("quickSort time elapsed: \t\t\t"+estimatedTime);
-//
-//
+        System.out.println("quickSort time elapsed: \t\t\t"+estimatedTime*sc);
+////
+////
         l=getCopy(list);
+        //System.out.println(l);
         startTime = System.nanoTime();
         modifiedInsertionSort(l);
+        //System.out.println(l);
         estimatedTime = System.nanoTime() - startTime;
-        System.out.println("modifiedInsertionSort time elapsed: "+estimatedTime);
+        //System.out.println(l);
+        System.out.println("binaryInsertionSort time elapsed: \t"+estimatedTime*sc);
+
+        l=getCopy(list);
+        //System.out.println(l);
+        startTime = System.nanoTime();
+        modifiedInsertionSortV2(l);
+        //System.out.println(l);
+        estimatedTime = System.nanoTime() - startTime;
+        System.out.println("binaryInsertionSortV2 time elapsed: \t\t"+estimatedTime*sc);
+
 
     }
 
@@ -67,7 +85,7 @@ public class Sorting {
     }
 
     private void initTest(ArrayList<Integer> list) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100000; i++) {
             list.add(ThreadLocalRandom.current().nextInt(1000));
         }
     }
@@ -206,6 +224,20 @@ public class Sorting {
         return h;
     }
 
+
+    private void modifiedInsertionSortV2(ArrayList<Integer> lst) {
+        //
+        for (int i = 1; i < lst.size(); i++) {
+            var index=binaryIndexSearch(lst,0,i);
+            var swapIndex=i;
+            var diff=i-index;
+            while (diff>0){
+                Collections.swap(lst,swapIndex,swapIndex-1);
+                swapIndex--;
+                diff--;
+            }
+        }
+    }
     private void modifiedInsertionSort(ArrayList<Integer> lst) {
         for (int i = 1; i < lst.size(); i++) {
             lst.add(binaryIndexSearch(lst,0,i), lst.get(i));

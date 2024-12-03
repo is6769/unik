@@ -11,9 +11,18 @@ public class Multiplying {
         Scanner myObj = new Scanner(System.in);
         String n1 = myObj.next();
         String n2 = myObj.next();
-
+        long startTime = System.nanoTime();
         System.out.println("Карацуба:              "+multiply(n1,n2));
+        long estimatedTime = System.nanoTime() - startTime;
+        System.out.println("Карацуба time elapsed: \t\t\t"+estimatedTime);
+
+        startTime = System.nanoTime();
         System.out.println("Стандартное умножение: "+multiplyingNormal.allLogic(n1,n2));
+        estimatedTime = System.nanoTime() - startTime;
+        System.out.println("Стандартное умножение time elapsed: \t\t\t"+estimatedTime);
+
+
+
     }
 
 
@@ -65,8 +74,9 @@ public class Multiplying {
         var bracketx=multiplyingNormal.allLogic(bracket,x);
 
         var result=additionSubtraction.allLogic(additionSubtraction.allLogic(acx2,"+",bracketx),"+",bd);
+        return result;
 
-        return result.replaceFirst("^0+(?!$)", "");
+        //return result.replaceFirst("^0+(?!$)", "");
     }
 
     private boolean isSingleDigit(String n) {

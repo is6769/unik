@@ -10,7 +10,7 @@ public class FibonacciNumbers {
     }
 
     private int nFibonacciNumber(int n){
-        if (n==2 || n==1){
+        if (n==0 || n==1){
             return 1;
         }
         return nFibonacciNumber(n-1)+nFibonacciNumber(n-2);

@@ -1,17 +1,12 @@
 package algorithms.practice4;
 
-/*
-1. из начала перекладываем на вспомогательный n-1
-2. max->end
-3. на vsp сейчас n-1,на end самый большой, значит мы должны переложить n-1 из vsp в end, используя пустой st как новый vsp.
-
-*/
-
+import java.util.Scanner;
 
 public class HanoiTower {
 
     public HanoiTower() {
-        hanoi(3,"A","B","C");
+        var sc= new Scanner(System.in);
+        hanoi(sc.nextInt(),"A","B","C");
     }
 
     private void hanoi(int n,String st,String vsp,String end){
@@ -20,9 +15,9 @@ public class HanoiTower {
             return;
         }
 
-        hanoi(n-1,st,end,vsp);//из начала перекладываем на вспомогательный n-1
+        hanoi(n-1,st,end,vsp);
         System.out.println(st+"->"+end); //max->end
-        hanoi(n-1,vsp,st,end); //на vsp сейчас n-1,на end самый большой, значит мы должны переложить n-1 из vsp в end, используя пустой st как новый vsp.
+        hanoi(n-1,vsp,st,end);
     }
 
     public static void main(String[] args) {

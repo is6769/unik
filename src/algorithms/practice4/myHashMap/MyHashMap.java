@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MyHashMap<K,V> {
 
-    private int SIZE=8;//всегда степень двойки
+    private int SIZE=8;
     private final double loadFactor=0.75;
     private ArrayList<LinkedList<MyEntry<K,V>>> values = new ArrayList<>();
 
@@ -49,7 +49,10 @@ public class MyHashMap<K,V> {
         var oldValues=values;
         values=new ArrayList<>();
         initValues();
-        oldValues.stream().filter(Objects::nonNull).forEach(bucket->bucket.forEach(entry->put(entry.getKey(), entry.getValue())));
+        oldValues.stream().filter(Objects::nonNull)
+                .forEach(bucket->
+                        bucket.forEach(entry->
+                                put(entry.getKey(), entry.getValue())));
     }
 
     private boolean getInnerIndex(int index,K key) {
@@ -57,11 +60,7 @@ public class MyHashMap<K,V> {
     }
 
     private void ifEntryWithKeyExistsDelete(int index, K key) {
-        for(MyEntry<K,V> entry:values.get(index)){
-            if (entry.getKey().equals(key)){
-                values.get(index).remove(entry);
-            }
-        }
+        values.get(index).removeIf(entry -> entry.getKey().equals(key));
     }
 
     private int hash(K key){

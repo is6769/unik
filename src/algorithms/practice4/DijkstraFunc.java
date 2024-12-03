@@ -6,7 +6,7 @@ public class DijkstraFunc {
 
     public DijkstraFunc() {
         var sc=new Scanner(System.in);
-        dijkstraFunc(sc.nextInt());
+        System.out.println(dijkstraFunc(sc.nextInt()));
     }
 
     private int dijkstraFunc(int n){
@@ -15,7 +15,7 @@ public class DijkstraFunc {
         } else if (n%2==0) {
             return dijkstraFunc(n/2);
         }
-        return dijkstraFunc(n)+dijkstraFunc(n+1);
+        return dijkstraFunc((n-1)/2)+dijkstraFunc((n-1)/2+1);
     }
 
     public static void main(String[] args) {

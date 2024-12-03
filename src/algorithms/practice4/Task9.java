@@ -2,11 +2,13 @@ package algorithms.practice4;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Task9 {
 
     public Task9() {
-        makeHashMap("aabbbccccz");
+        var sc=new Scanner(System.in);
+        makeHashMap(sc.next());
     }
 
     private void makeHashMap(String str){

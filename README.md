@@ -1,2 +1,2 @@
 Repository for university practices.
-All is written on Java 22/23.
+All is made with Java 22/23.
